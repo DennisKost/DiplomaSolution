@@ -34,8 +34,8 @@ namespace ClientApp_WPF
         } 
 
         public AppViewModel(){
-            //client.httpClient.BaseAddress = new Uri("http://catalystcee-001-site1.htempurl.com/");
-            httpClient.BaseAddress = new Uri("https://localhost:44303/");
+            httpClient.BaseAddress = new Uri("http://catalystcee-001-site1.htempurl.com/");
+            //httpClient.BaseAddress = new Uri("https://localhost:44303/");
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));

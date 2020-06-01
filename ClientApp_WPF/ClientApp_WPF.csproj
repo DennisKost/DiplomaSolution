@@ -16,15 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Kompas6API5">
-      <HintPath>..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v18 Study\SDK\Samples\Common\Kompas6API5.dll</HintPath>
-    </Reference>
-    <Reference Include="Kompas6Constants3D">
-      <HintPath>..\..\..\..\..\Program Files\ASCON\KOMPAS-3D v18 Study\SDK\Samples\Common\Kompas6Constants3D.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

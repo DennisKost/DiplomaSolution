@@ -14,8 +14,8 @@ namespace LibraryServer
         {
             HttpClient client = new HttpClient
             {
-                //BaseAddress = new Uri("http://catalystcee-001-site1.htempurl.com/")
-                BaseAddress = new Uri("https://localhost:44303/")
+                BaseAddress = new Uri("http://catalystcee-001-site1.htempurl.com/")
+                //BaseAddress = new Uri("https://localhost:44303/")
             };
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
