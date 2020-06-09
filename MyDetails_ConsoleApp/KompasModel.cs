@@ -2,16 +2,16 @@
 using Kompas6Constants3D;
 using Kompas6API5;
 
-namespace MyDetails_ConsoleApp
+namespace MyDetails
 {
     /// <summary>
     /// Логика рисования деталей в компасе
     /// </summary>
     class KompasModel
     {
-        private KompasObject kompas;
+        private readonly KompasObject kompas;
 
-        public KompasModel()
+        internal KompasModel()
         {
             Type t = Type.GetTypeFromProgID("KOMPAS.Application.5");
             kompas = (KompasObject)Activator.CreateInstance(t);
@@ -19,9 +19,75 @@ namespace MyDetails_ConsoleApp
         }
 
         /// <summary>
-        /// Нарисовать деталь без отверстий
+        /// Нарисовать треугольник без отверстий
         /// </summary>
-        public void DrawWithoutHoles()
+        internal void DrawTriangleWithoutHoles()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Нарисовать треугольник с отверстиями круглыми радиально
+        /// </summary>
+        internal void DrawTriangleWithRoundHole()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Нарисовать треугольник с отверстием некруглыми в центре
+        /// </summary>
+        internal void DrawTriangleWithNonCircularHole()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Нарисовать треугольник с отверстиями круглыми радиально и 
+        /// отверстием некруглым в центре
+        /// </summary>
+        internal void DrawTriangleWithRoundAndNonCircularHoles()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Нарисовать прямоугольник без отверстий
+        /// </summary>
+        internal void DrawRectangleWithoutHoles()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Нарисовать прямоугольник с отверстиями круглыми радиально
+        /// </summary>
+        internal void DrawRectangleWithRoundHole()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Нарисовать прямоугольник с отверстием некруглыми в центре
+        /// </summary>
+        internal void DrawRectangleWithNonCircularHole()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Нарисовать прямоугольник с отверстиями круглыми радиально и
+        /// отверстием некруглым в центре
+        /// </summary>
+        internal void DrawRectangleWithRoundAndNonCircularHoles()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Нарисовать четырехугольник с непрямыми углами без отверстий
+        /// </summary>
+        internal void DrawQuadrangleWithoutHoles()
         {
             if (kompas != null)
             {
@@ -76,9 +142,9 @@ namespace MyDetails_ConsoleApp
         }
 
         /// <summary>
-        /// Нарисовать деталь с круглым отверстием
+        /// Нарисовать четырехугольник с непрямыми углами с круглым отверстием
         /// </summary>
-        public void DrawWithRoundHole()
+        internal void DrawQuadrangleWithRoundHole()
         {
             if (kompas != null)
             {
@@ -134,9 +200,9 @@ namespace MyDetails_ConsoleApp
         }
 
         /// <summary>
-        /// Нарисовать деталь с отверстием некруглым
+        /// Нарисовать четырехугольник с непрямыми углами с отверстием некруглым
         /// </summary>
-        public void DrawWithNonCircularHole()
+        internal void DrawQuadrangleWithNonCircularHole()
         {
             if (kompas != null)
             {
@@ -195,9 +261,9 @@ namespace MyDetails_ConsoleApp
         }
 
         /// <summary>
-        /// Нарисовать деталь с круглым и некруглым отверстиями
+        /// Нарисовать четырехугольник с непрямыми углами с круглым и некруглым отверстиями
         /// </summary>
-        public void DrawWithRoundAndNonCircularHoles()
+        internal void DrawQuadrangleWithRoundAndNonCircularHoles()
         {
             if (kompas != null)
             {

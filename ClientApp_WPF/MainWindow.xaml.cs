@@ -6,8 +6,8 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace ClientApp_WPF
 {
@@ -17,10 +17,10 @@ namespace ClientApp_WPF
     public partial class MainWindow : Window
     {
         private readonly AppViewModel appVM = new AppViewModel();
-        private DoubleAnimation widthAnimation;        
+        private DoubleAnimation widthAnimation;
 
         public MainWindow()
-        {                
+        {
             InitializeComponent();
 
             Initialize();
@@ -68,7 +68,7 @@ namespace ClientApp_WPF
 
         private void Click_SendRequest(object sender, RoutedEventArgs e)
         {
-            SendRequest();            
+            SendRequest();
         }
 
         private void KeyDown_Request(object sender, KeyEventArgs e)
@@ -76,7 +76,7 @@ namespace ClientApp_WPF
             if (appVM.DataType == DataType.Human && e.Key == Key.Enter) SendRequest();
         }
 
-        private void ShowResultList() 
+        private void ShowResultList()
         {
             result.Visibility = Visibility.Visible;
         }
@@ -160,7 +160,7 @@ namespace ClientApp_WPF
         {
             if (resultList.SelectedIndex == -1) return;
             HideResultList();
-            ShowResponseDetails();                            
+            ShowResponseDetails();
         }
 
         private void Click_Back(object sender, RoutedEventArgs e)
@@ -176,7 +176,7 @@ namespace ClientApp_WPF
         {
             Human.IsChecked = true;
             appVM.Start();
-        }        
+        }
 
         private void Checked_Human(object sender, RoutedEventArgs e)
         {
@@ -185,7 +185,7 @@ namespace ClientApp_WPF
             appVM.RebuildResponseList();
             request.AcceptsReturn = false;
             request.Height = 30;
-        }        
+        }
 
         private void Checked_Math(object sender, RoutedEventArgs e)
         {
@@ -223,15 +223,8 @@ namespace ClientApp_WPF
 
         private void OpenMenu(object sender, RoutedEventArgs e)
         {
-            if (request.SelectedText == "")
-                ItemCopy.IsEnabled = ItemCut.IsEnabled = false;
-            else
-                ItemCopy.IsEnabled = ItemCut.IsEnabled = true;
-
-            if (Clipboard.ContainsText())
-                ItemPaste.IsEnabled = true;
-            else
-                ItemPaste.IsEnabled = false;
+            ItemCopy.IsEnabled = ItemCut.IsEnabled = request.SelectedText == string.Empty ? false : true;
+            ItemPaste.IsEnabled = Clipboard.ContainsText() ? true : false;
         }
 
         private void Click_Draw(object sender, RoutedEventArgs e)
@@ -279,14 +272,15 @@ namespace ClientApp_WPF
                 else File.WriteAllText(appVM.CurrentFileName, request.Text);
             }
         }
-            
+
         private void Click_SaveAsFile(object sender, RoutedEventArgs e)
         {
             if (request.Text == string.Empty) MessageBox.Show("Запрос не введен");
             else SaveAsFile();
         }
-        
-        private void SaveAsFile(){
+
+        private void SaveAsFile()
+        {
             var saveFileDialog = new SaveFileDialog()
             {
                 Filter = "Text file (*.txt)|*.txt|Dat File (*.dat)|*.dat",
@@ -317,5 +311,5 @@ namespace ClientApp_WPF
         {
             Application.Current.Shutdown();
         }
-    }    
+    }
 }

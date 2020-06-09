@@ -8,6 +8,8 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
+using ClassLibrary_Model;
+using System.Threading.Tasks;
 
 namespace ClientApp_WPF
 {
@@ -27,15 +29,16 @@ namespace ClientApp_WPF
             get => currentFileName;
             set => SetProperty(ref currentFileName, value);
         }
-        public string SelectedItem 
+        public string SelectedItem
         {
             get => selectedItem;
             set => SetProperty(ref selectedItem, value);
-        } 
+        }
 
-        public AppViewModel(){
+        public AppViewModel()
+        {
             httpClient.BaseAddress = new Uri("http://catalystcee-001-site1.htempurl.com/");
-            //httpClient.BaseAddress = new Uri("https://localhost:44303/");
+            //httpClient.BaseAddress = new Uri("https://localhost:44319/");
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
@@ -44,13 +47,16 @@ namespace ClientApp_WPF
         /// <summary>
         /// Обновление списка деталей из ответа
         /// </summary>
-        public void SetResponseDetails(){
-            if (DataType == DataType.Human){
+        public void SetResponseDetails()
+        {
+            if (DataType == DataType.Human)
+            {
                 HumanResponseList.Clear();
-                foreach (string str in client.GetHumanValue(SelectedItem)) 
+                foreach (string str in client.GetHumanValue(SelectedItem))
                     HumanResponseList.Add(str);
             }
-            else{
+            else
+            {
                 MathResponseList.Clear();
                 foreach (var response in client.GetValue(SelectedItem))
                     MathResponseList.Add(response);
@@ -67,7 +73,7 @@ namespace ClientApp_WPF
             // Среда .NET Core не позволяет использовать все возможности API компаса, 
             // поэтому запускается программа для рисования деталей в компасе, написанная на .NET Framework
             Process process = new Process();
-            process.StartInfo.FileName = @"C:\Users\Dennis\source\repos\MyDetails_ConsoleApp\bin\Debug\MyDetails_ConsoleApp.exe";
+            process.StartInfo.FileName = "MyDetails_ConsoleApp.exe";
             process.StartInfo.CreateNoWindow = true;
             foreach (string str in value) process.StartInfo.ArgumentList.Add(str);
             process.Start();
@@ -101,7 +107,7 @@ namespace ClientApp_WPF
             try
             {
                 if (DataType == DataType.Human) request = client.Wrap(request);
-                await httpClient.PostAsJsonAsync("api/data", new string[] { request });
+                await httpClient.PostAsJsonAsync("api/data", request.Split("\r\n") );
             }
             catch (Exception ex)
             {
