@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-//using Microsoft.EntityFrameworkCore;
 using WebApplicationMVC_Diploma.Models;
 
 namespace WebApplicationMVC_Diploma.Controllers
-{        
+{
     [ApiController]
     //[Route("api/[controller]")]
     [Route("api/")]
@@ -17,8 +11,10 @@ namespace WebApplicationMVC_Diploma.Controllers
     public class InputController : ControllerBase
     {
         private readonly IRequestResponseModel requestResponse;
+        private readonly ISqlModel sqlModel;
 
-        public InputController(IRequestResponseModel requestResponse){
+        public InputController(ISqlModel sqlModel, IRequestResponseModel requestResponse){
+            this.sqlModel = sqlModel;
             this.requestResponse = requestResponse;
         }
 
@@ -30,17 +26,21 @@ namespace WebApplicationMVC_Diploma.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<string[]> Get(int id)
-        {
-            return Ok(id); // for example
-        }
+        //[HttpGet("{id}")]
+        //public ActionResult<string[]> Get(int id)
+        //{
+        //    return Ok(id); // for example
+        //}
 
         [Route("")]
         [HttpPost]
         public ActionResult Post([FromBody]KeyValuePair<string[], string[]> message)
         {            
             requestResponse.AddResult(message);
+            requestResponse.Commit();
+            // Проверка добавления строки в БД
+            sqlModel.AddResult(new Entities.Dictionary { Key = "треуг", Value = "деталь 1, деталь 2" });
+            sqlModel.Commit();
             return Ok();
         }
 

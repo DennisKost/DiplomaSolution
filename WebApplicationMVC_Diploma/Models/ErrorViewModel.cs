@@ -1,5 +1,3 @@
-using System;
-
 namespace WebApplicationMVC_Diploma.Models
 {
     public class ErrorViewModel
