@@ -58,9 +58,9 @@ namespace ChatApp
                                 "                   <sub>. отсутствие_отверстия",
                                 "1 2 1",
                                 "lalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalalala",
-                                " hyehyehyehyehyehyehyehyehyehyehyehyehyehyehye          hye",
-                                "huy2huy2huy2huy2huy2huy2huy2huy2huy2huy2huy2huy2huy2huy2huy2huy2huy2huy2huy2   huy2",
-                                " huyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuyhuy                  huy"};
+                                " test line 09234utjooj",
+                                "str23534623",
+                                " 2o4thl  oierhgou24fojp"};
         }
     }
 }
